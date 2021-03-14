@@ -136,7 +136,7 @@ void reconnect()
 ICACHE_RAM_ATTR void detectsMovement() 
 {
     Serial.println("Wykryto Ruch!");
-    client.publish("SoTToN_Eye/motion", "RUCH");
+    client.publish("SoTToN_Eye/motion", "true");
     previousTime = millis();
     startTimer = true;
 }
@@ -206,7 +206,7 @@ void loop() {
     // ---> w przeciwnym wpadku utrzymnujemy alarm ....
     if ((now - previousTime > 10000) && startTimer) 
     {
-        client.publish("SoTToN_Eye/motion", "BRAK");
+        client.publish("SoTToN_Eye/motion", "false");
         Serial.println("Brak Ruchu");
         startTimer = false;
     }
